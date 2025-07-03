@@ -5,9 +5,11 @@ import Footer from '../Pages/shared/Footer/Footer';
 
 const RootLayout = () => {
     return (
-        <div>
+        <div className='min-h-screen flex flex-col max-w-[1280px] mx-auto'>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className='flex-1 flex flex-col justify-center'>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );
