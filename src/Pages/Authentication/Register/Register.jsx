@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
+import useAuth from '../../../Hooks/useAuth';
+import { AuthContext } from '../../../UserAuth/AuthContext';
 
 const Register = () => {
 
@@ -8,8 +10,19 @@ const Register = () => {
         register, handleSubmit, formState: { errors }
     } = useForm()
 
+    const {createUser} = useAuth()
+    // const {createUser} = use(AuthContext)
+
     const onSubmit = data => {
         console.log(data)
+        // console.log(createUser)
+        createUser(data.email, data.password)
+        .then(r=>{
+            console.log(r)
+        })
+        .catch(e=>{
+            console.log(e)
+        })
     }
 
 

@@ -7,7 +7,7 @@ import banner3 from '../../../assets/banner/banner3.png'
 
 const Banner = () => {
     return (
-        <div className='relative'>
+        <div>
             <Carousel
                 autoPlay={true}
                 infiniteLoop={true}
@@ -17,6 +17,7 @@ const Banner = () => {
                 showArrows={false}
                 transitionTime={700}
                 showStatus={false}
+                
             >
                 <div>
                     <img src={banner1} alt="" />
