@@ -2,10 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const MyParcels = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate()
 
     const { data: parcels = [], refetch } = useQuery({
         queryKey: ['my-parcels', user.email],
@@ -49,6 +51,12 @@ const MyParcels = () => {
         }
     };
 
+    // Payment funtionility
+    const handlePay = (id) => {
+        console.log('payment id', id)
+        navigate(`/deshboard/payment/${id}`)
+    }
+
     return (
         <div className="p-5 overflow-x-auto rounded-lg shadow-md mt-5 h-full ">
             <table className="min-w-full divide-y divide-gray-200 bg-white">
@@ -90,9 +98,9 @@ const MyParcels = () => {
                                 >
                                     View
                                 </button>
-                                <button
-
-                                    className="cursor-pointer bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                                <button disabled={parcel.payment_status === 'paid' ? true : false}
+                                    onClick={() => handlePay(parcel._id)}
+                                    className={`${parcel.payment_status==='paid'? 'cursor-not-allowed bg-green-800' : 'cursor-pointer bg-green-500 hover:bg-green-600'}  text-white px-3 py-1 rounded `}
                                 >
                                     Pay
                                 </button>

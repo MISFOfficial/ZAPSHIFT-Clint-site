@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
+import useAxios from '../../../Hooks/useAxios';
 
 const Login = () => {
     const { signIn, google } = useAuth()
-    const[error, setError]=useState()
-    const navigate=useNavigate()
+    const [error, setError] = useState()
+    const navigate = useNavigate()
+    const location=useLocation()
+
+    const axiosInstance = useAxios()
+
+    const from=location?.state || '/'
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
@@ -14,24 +20,38 @@ const Login = () => {
         console.log(data)
         setError(null)
         signIn(data.email, data.password)
-        .then(r=>{
-            console.log(r)
-            navigate('/')
-        })
-        .catch(e=>{
-            console.log(e)
-            setError('Invalid email or password')
-        })
+            .then(r => {
+                console.log(r)
+                navigate(from)
+            })
+            .catch(e => {
+                console.log(e)
+                setError('Invalid email or password')
+            })
     }
 
-    const handlegoogle=()=>{
+    const handlegoogle = () => {
         google()
-        .then(r=>{
-            console.log(r)
-        })
-        .catch(e=>{
-            console.log(e)
-        })
+            .then(async (r) => {
+                console.log(r)
+                const user = r.user
+                // console.log(user)
+                const userInfo = {
+                    name: user?.displayName,
+                    photoURL: user?.photoURL,
+                    email: user?.email,
+                    role: 'user',
+                    create_at: new Date().toISOString(),
+                    last_login: new Date().toISOString()
+                }
+
+                const result = await axiosInstance.post('/users', userInfo)
+                console.log(result)
+                navigate(from)
+            })
+            .catch(e => {
+                console.log(e)
+            })
     }
 
     return (

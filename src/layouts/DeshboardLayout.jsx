@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router';
+import { FaHome, FaBoxOpen, FaHistory, FaUserEdit, FaSearchLocation } from 'react-icons/fa';
 import ProFastLogo from '../Pages/shared/ProFastLogo/ProFastLogo';
+
 
 const DeshboardLayout = () => {
     return (
@@ -36,8 +38,31 @@ const DeshboardLayout = () => {
                     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                         {/* Sidebar content here */}
                         <ProFastLogo></ProFastLogo>
-                        <li><Link to='/deshboard/myparcels'>My parcels</Link></li>
-                        <li><a>Sidebar Item s2</a></li>
+                        <li>
+                            <Link to='/deshboard' className="flex items-center gap-2">
+                                <FaHome /> Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/deshboard/myparcels' className="flex items-center gap-2">
+                                <FaBoxOpen /> My Parcels
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/deshboard/history' className="flex items-center gap-2">
+                                <FaHistory /> Payment History
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/deshboard/track_parcel' className="flex items-center gap-2">
+                                <FaSearchLocation /> Track a Package
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/deshboard/profile' className="flex items-center gap-2">
+                                <FaUserEdit /> Update Profile
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Navbar = () => {
 
-    const {user, logout}=useAuth()
+    const { user, logout } = useAuth()
 
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -15,15 +15,15 @@ const Navbar = () => {
         <li><NavLink to='/about'>About Us</NavLink></li>
     </>
 
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
-    const handleLogout=()=>{
+    const handleLogout = () => {
         logout()
-        .then(() => {
-            navigate('/login')
-        }).catch(() => {
-            alert('error')
-        });
+            .then(() => {
+                navigate('/login')
+            }).catch(() => {
+                alert('error')
+            });
     }
 
     return (
@@ -49,7 +49,10 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user ? <button onClick={handleLogout} className='btn bg-green-500'>Logout</button> : <Link to='/login'><button className='btn bg-green-500'>LogIn</button></Link>
+                        user ? <div className='flex gap-5 items-center'>
+                            <img className='w-13 h-13 border rounded-full object-cover' src={user?.photoURL} alt="" />
+                            <button onClick={handleLogout} className='btn bg-green-500'>Logout</button>
+                        </div> : <Link to='/login'><button className='btn bg-green-500'>LogIn</button></Link>
                     }
                 </div>
             </div>

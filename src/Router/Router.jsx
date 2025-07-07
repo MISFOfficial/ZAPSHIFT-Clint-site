@@ -10,7 +10,9 @@ import SendParcel from "../Pages/SendParcel/SendParcel";
 import PrivetRout from "../PrivetRoute/PrivetRout";
 import DeshboardLayout from "../layouts/DeshboardLayout";
 import MyParcels from "../Pages/Deshboard/Myparcel/MyParcels";
-import fasd from "../Pages/Deshboard/my/fasd";
+import Payment from "../Pages/Deshboard/Payment/Payment";
+import PaymentHistry from "../Pages/Deshboard/PaymentHistry/PaymentHistry";
+import TrackPackge from "../Pages/Deshboard/TrackPackge/TrackPackge";
 
 export const router = createBrowserRouter([
     {
@@ -64,8 +66,16 @@ export const router = createBrowserRouter([
                 Component: MyParcels
             },
             {
-                path:'t',
-                Component: fasd
+                path:'payment/:parcelId',
+                Component: Payment,
+            },
+            {
+                path:'History',
+                Component: PaymentHistry,
+            },
+            {
+                path:'track_parcel',
+                Component: TrackPackge,
             }
         ]
     }
