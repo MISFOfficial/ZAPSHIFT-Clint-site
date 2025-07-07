@@ -13,6 +13,7 @@ import MyParcels from "../Pages/Deshboard/Myparcel/MyParcels";
 import Payment from "../Pages/Deshboard/Payment/Payment";
 import PaymentHistry from "../Pages/Deshboard/PaymentHistry/PaymentHistry";
 import TrackPackge from "../Pages/Deshboard/TrackPackge/TrackPackge";
+import BeARider from "../Pages/Deshboard/BeARider/BeARider";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,12 @@ export const router = createBrowserRouter([
                 </PrivetRout>,
                 loader: () => fetch('./warehouses.json')
             },
+            {
+                path: '/beARider',
+                element: <PrivetRout>
+                    <BeARider></BeARider>
+                </PrivetRout>,
+            }
         ]
     },
     {

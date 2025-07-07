@@ -12,6 +12,7 @@ const Navbar = () => {
         {user && <li><NavLink to='/sendparcel'>Send Parcel</NavLink></li>}
         <li><NavLink to='/coverage'>Coverage</NavLink></li>
         {user && <li><NavLink to='/deshboard'>Deshboard</NavLink></li>}
+        <li><NavLink to='/beARider'>Be A Rider</NavLink></li>
         <li><NavLink to='/about'>About Us</NavLink></li>
     </>
 
@@ -40,7 +41,7 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <a className=""><ProFastLogo></ProFastLogo></a>
+                    <span className=""><ProFastLogo></ProFastLogo></span>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
