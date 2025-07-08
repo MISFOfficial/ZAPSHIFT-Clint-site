@@ -14,6 +14,7 @@ import Payment from "../Pages/Deshboard/Payment/Payment";
 import PaymentHistry from "../Pages/Deshboard/PaymentHistry/PaymentHistry";
 import TrackPackge from "../Pages/Deshboard/TrackPackge/TrackPackge";
 import BeARider from "../Pages/Deshboard/BeARider/BeARider";
+import RiderApproval from "../Pages/Deshboard/BeARider/AproveRoider/RiderAproval";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,7 @@ export const router = createBrowserRouter([
                 element: <PrivetRout>
                     <BeARider></BeARider>
                 </PrivetRout>,
+                loader: () => fetch('./warehouses.json')
             }
         ]
     },
@@ -67,22 +69,26 @@ export const router = createBrowserRouter([
         element: <PrivetRout>
             <DeshboardLayout></DeshboardLayout>
         </PrivetRout>,
-        children:[
+        children: [
             {
-                path:'myparcels',
+                path: 'myparcels',
                 Component: MyParcels
             },
             {
-                path:'payment/:parcelId',
+                path: 'payment/:parcelId',
                 Component: Payment,
             },
             {
-                path:'History',
+                path: 'History',
                 Component: PaymentHistry,
             },
             {
-                path:'track_parcel',
+                path: 'track_parcel',
                 Component: TrackPackge,
+            },
+            {
+                path: 'riderApproval',
+                Component: RiderApproval,
             }
         ]
     }

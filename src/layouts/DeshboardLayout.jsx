@@ -59,6 +59,11 @@ const DeshboardLayout = () => {
                             </Link>
                         </li>
                         <li>
+                            <Link to='/deshboard/riderApproval' className="flex items-center gap-2">
+                                <FaSearchLocation /> Rider Approval
+                            </Link>
+                        </li>
+                        <li>
                             <Link to='/deshboard/profile' className="flex items-center gap-2">
                                 <FaUserEdit /> Update Profile
                             </Link>

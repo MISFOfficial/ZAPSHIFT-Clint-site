@@ -8,7 +8,7 @@ const PaymentHistry = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
 
-    const { isPending, data: payments = [] } = useQuery({
+    const { isPending, isLoading, data: payments = [] } = useQuery({
         queryKey: ['payments', user.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`payments?email=${user.email}`);
@@ -16,9 +16,11 @@ const PaymentHistry = () => {
         }
     })
 
-    if (isPending) {
+    if (isPending || isLoading) {
         return 'loading......'
     }
+
+    console.log(payments)
 
     return (
         <div className="max-w-7xl mx-auto mt-8 px-4">
